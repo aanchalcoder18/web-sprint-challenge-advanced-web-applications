@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import axiosWithAuth from '../utils/axiosWithAuth';
 
 const initialArticle = {
     id:"",
@@ -23,34 +25,71 @@ const EditForm = (props)=> {
     const handleSubmit = (e) => {
         e.preventDefault();
         handleEdit(article);
+        axiosWithAuth().put(`http://localhost:5000/api/articles/${editId}`, article)
+            .then(resp => {
+                console.log(resp);
+            })
+            .catch(err => {
+                console.log(err);
+            })
     }
-
 
     const handleCancel = (e) => {
         e.preventDefault();
         handleEditCancel();
     }
 
+    useEffect(() => {
+        axios.get(`http://localhost:5000/api/articles/${editId}`)
+            .then(res => {
+                setArticle(res.data)
+                history.push(`/article/${editId}`)
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }, []);
+
     return(<FormContainer onSubmit={handleSubmit}>
         <h3>Edit Article</h3>
         <div>
-            <label>Headline</label>
-            <input value={article.headline} id="headline" name="headline" onChange={handleChange}/>
+          <label>Headline</label>
+            <input 
+              value={article.headline} 
+              id="headline" 
+              name="headline" 
+              onChange={handleChange}
+            />
         </div>
         <div>
-            <label>Author</label>
-            <input value={article.author} id="author" name="author" onChange={handleChange}/>
+          <label>Author</label>
+            <input 
+              value={article.author} 
+              id="author" 
+              name="author" 
+              onChange={handleChange}
+            />
         </div>
         <div>
-            <label>Summary</label>
-            <input value={article.summary} id="summary" name="summary" onChange={handleChange}/>
+          <label>Summary</label>
+            <input 
+              value={article.summary} 
+              id="summary" 
+              name="summary" 
+              onChange={handleChange}
+            />
         </div>
         <div>
-            <label>Body</label>
-            <input value={article.body} id="body" name="body" onChange={handleChange}/>
+          <label>Body</label>
+            <input 
+              value={article.body} 
+              id="body" 
+              name="body" 
+              onChange={handleChange}
+            />
         </div>
-        <Button id="editButton">Edit Article</Button>
-        <Button onClick={handleCancel}>Cancel</Button>
+        <Button onClick={handleSubmit} id="editButton">Edit Article</Button>
+        <Button onClick={handleCancel} id="cancelButton">Cancel</Button>
     </FormContainer>);
 }
 

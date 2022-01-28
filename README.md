@@ -53,51 +53,51 @@ In this project, you will demonstrate your mastery of these skills by creating *
 
 ### Basic Routing
 > *Build the needed utilities to restrict access to private routes.*
-* [ ] Build a `Route` component that renders rendering `Login.js` to the path `/`.
-* [ ] Build a `Route` component that renders rendering `Login.js` to the path `/login`.
-* [ ] Build a `Route` component that renders rendering `View.js` to the path `/view`.
-* [ ] Build a `Route` component that renders rendering `Logout.js` to the path `/logout`.
+* [x] Build a `Route` component that renders rendering `Login.js` to the path `/`.
+* [x] Build a `Route` component that renders rendering `Login.js` to the path `/login`.
+* [x] Build a `Route` component that renders rendering `View.js` to the path `/view`.
+* [x] Build a `Route` component that renders rendering `Logout.js` to the path `/logout`.
 
 ### Login Authentication
 > *Build a login form to authenticate your users along with all the components and utilities needed to support authentication.*
 
-* [ ] In `Login.js`, build all UI and state functionality needed to capture a username and password. On a successful login, redirect user to the `View.js` component.
-* [ ] **Make sure that the input for your username and password includes the id="username" and id="password" attributes. Codegrade autotests will fail without them.**
-* [ ] **Make sure that the submit button to your login form includes the id="submit" attribute.  Codegrade autotests will fail without them.**
-* [ ] In `Login.js`, add a p tag that will display an error if one occurs. Add in all state functionality needed to support error display.
-* [ ] **Make sure your error p tag has an id="error" attribute attached. Codegrade autotests will fail without them.**
-* [ ] Construct an http request that retrieves an auth token from the server when the username `Lambda` and the password `School` is passed into the request. Complete successful login auth flow and redirect to `View.js.`
-* [ ] Display an appropriate error message when login is not successful.
+* [x] In `Login.js`, build all UI and state functionality needed to capture a username and password. On a successful login, redirect user to the `View.js` component.
+* [x] **Make sure that the input for your username and password includes the id="username" and id="password" attributes. Codegrade autotests will fail without them.**
+* [x] **Make sure that the submit button to your login form includes the id="submit" attribute.  Codegrade autotests will fail without them.**
+* [x] In `Login.js`, add a p tag that will display an error if one occurs. Add in all state functionality needed to support error display.
+* [x] **Make sure your error p tag has an id="error" attribute attached. Codegrade autotests will fail without them.**
+* [x] Construct an http request that retrieves an auth token from the server when the username `Lambda` and the password `School` is passed into the request. Complete successful login auth flow and redirect to `View.js.`
+* [x] Display an appropriate error message when login is not successful.
 
 ### Route Authentication
-* [ ] Build a `PrivateRoute` component within the components folder.
-* [ ] Use the `PrivateRoute` component to build a route rendering `View.js` to the path `/view`.
-* [ ] Use the `PrivateRoute` component to build a route rendering `Logout.js` to the path `/logout`.
+* [x] Build a `PrivateRoute` component within the components folder.
+* [x] Use the `PrivateRoute` component to build a route rendering `View.js` to the path `/view`.
+* [x] Use the `PrivateRoute` component to build a route rendering `Logout.js` to the path `/logout`.
 
 ### Request Authentication
 > *Complete the requests needed to execute all CRUD functions.*
-* [ ] Build a `axiosWithAuth` module within the utils folder to create an instance of axios with the authentication header.
+* [x] Build a `axiosWithAuth` module within the utils folder to create an instance of axios with the authentication header.
 
-* [ ] In `View.js`, complete `handleDelete` so that a http request is made that deletes the article with the included id. After successfully deleting the article on the api, update local state to reflect these changes.
+* [x] In `View.js`, complete `handleDelete` so that a http request is made that deletes the article with the included id. After successfully deleting the article on the api, update local state to reflect these changes.
 
-* [ ] In `View.js`, complete `handleDelete` so that a http request is made that deletes the article with the included id. After successfully deleting the article on the api, update local state to reflect these changes.
+* [x] In `View.js`, complete `handleDelete` so that a http request is made that deletes the article with the included id. After successfully deleting the article on the api, update local state to reflect these changes.
 
-* [ ] `editId` is passed into the `EditForm` component. In `EditForm.js`, make a http request on mount to get the article with the id `editId`. Save the result in state.
+* [x] `editId` is passed into the `EditForm` component. In `EditForm.js`, make a http request on mount to get the article with the id `editId`. Save the result in state.
 
-* [ ] In `View.js`, complete `handleEdit` so that a http request is made that updates the passed in article. Set the editing state to false when the request is complete. After successfully deleting the article on the api, update local state to reflect these changes.
+* [x] In `View.js`, complete `handleEdit` so that a http request is made that updates the passed in article. Set the editing state to false when the request is complete. After successfully deleting the article on the api, update local state to reflect these changes.
 
 
 ### Logout Authentication
 > *Add in the http requests needed to logout of the application.*
 
-* [ ] In `Logout.js`, execute a http request to logout on mount. When the request is complete, the user's security token should be removed and the browser should redirect to the login page.
+* [x] In `Logout.js`, execute a http request to logout on mount. When the request is complete, the user's security token should be removed and the browser should redirect to the login page.
 
 ### Advanced Testing
 > *Add the following tests within Article.test.js.*
-* [ ] Build a test that shows the `Article` component, given the correct props, can render without errors.
-* [ ] Build a test that shows that when a correctly formatted article is passed into the `Article` component, the correct headline, author, summary and body are displayed.
-* [ ] The `Article` component should display "Associated Press" when an author attribute is not avalible. Build a test that verifies that that is true.
-* [ ] Build a test that show that when the deleteButton is pressed on an Article, the handleDelete functional property is executed.
+* [x] Build a test that shows the `Article` component, given the correct props, can render without errors.
+* [x] Build a test that shows that when a correctly formatted article is passed into the `Article` component, the correct headline, author, summary and body are displayed.
+* [x] The `Article` component should display "Associated Press" when an author attribute is not avalible. Build a test that verifies that that is true.
+* [x] Build a test that show that when the deleteButton is pressed on an Article, the handleDelete functional property is executed.
 
 ## Important Notes:
 * You are welcome to create additional files but **do not move or rename existing files** or folders.
@@ -118,8 +118,16 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 
 1. Explain what a token is used for.
 
+A token is a form of an authentication that allows access to the API. It is received after a user has successfully been authenticated and authorized themselves afterwards these tokens are treated as credentials upon calling the API.
+
 2. What steps can you take in your web apps to keep your data secure?
+
+Secure against HTTP authentication, DDoS attack, Cross-Site Scripting, Cross-Site Request forgery, broken authentication, libraries and components, and adding ene-to-end Encryption.
 
 3. Describe how web servers work.
 
+A web server connects to the Internet and supports physical data interchange with other devices connected to the web.
+
 4. Which HTTP methods can be mapped to the CRUD acronym that we use when interfacing with APIs/Servers.
+
+POST, GET, PUT, PATCH, and DELETE. These correspond to create, read, update, and delete (or CRUD) operations.

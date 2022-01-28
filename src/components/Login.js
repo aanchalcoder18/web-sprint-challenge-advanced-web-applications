@@ -1,12 +1,69 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useHistory } from 'react-router-dom'
+import axios from 'axios';
+
+const initialValues = {
+    credentials: {
+        username: '', 
+        password: ''
+    }
+}
 
 const Login = () => {
-    
+    const [values, setValues] = useState(initialValues);
+    const [error, setError] = useState(false)
+    const { push } = useHistory();
+
+    const handleChanges = (e) => {
+        setValues({
+            ...values,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        axios.post('http://localhost:5000/api/login', values)
+            .then(resp => {
+                localStorage.setItem('token', resp.data.token);
+                push('/view')
+            })
+            .catch(err => {
+                setError(err.response.data.error)
+            });
+    };
+
     return(<ComponentContainer>
         <ModalContainer>
             <h1>Welcome to Blogger Pro</h1>
             <h2>Please enter your account information.</h2>
+
+            <form onSubmit={handleSubmit}>
+              <label htmlFor='username'>Username: </label>
+                <input 
+                    id='username' 
+                    type='text'
+                    name='username' 
+                    value={values.username} 
+                    onChange={handleChanges}
+                    placeholder='Enter username'
+                />
+              <label htmlFor='password'>Password: </label>
+                <input 
+                    id='password' 
+                    name='password' 
+                    type='password' 
+                    value={values.password} 
+                    onChange={handleChanges}
+                    placeholder='Enter password'
+                />
+                <br />
+                <button id="submit">Login</button>
+            </form>
+            {error && (
+                <p id ="error">Login Error! Please try again!</p>
+            )}
         </ModalContainer>
     </ComponentContainer>);
 }
